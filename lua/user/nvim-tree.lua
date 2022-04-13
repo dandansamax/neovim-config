@@ -33,6 +33,8 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
+
 nvim_tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
@@ -42,7 +44,6 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
